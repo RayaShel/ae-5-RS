@@ -5,6 +5,7 @@ Naomi Ekas
 ``` r
 library(tidyverse)
 library(skimr)
+library(scales)
 ```
 
 ``` r
@@ -42,7 +43,8 @@ hotels %>%
        y = "Mean ADR (average daily rate)",
        title = "Comparison of resort and city hotel prices across months",
        subtitle = "Resort hotel prices soar in the summer while city hotel prices remain relatively constant throughout the year",
-       color = "Hotel type")
+       color = "Hotel type") +
+  scale_y_continuous(labels = label_dollar())
 ```
 
     ## `summarise()` has grouped output by 'hotel'. You can override using the

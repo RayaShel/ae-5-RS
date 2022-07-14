@@ -2,6 +2,8 @@
 title: "Hotel bookings - factors"
 author: "Naomi Ekas"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r load-pkg, message = FALSE}
@@ -25,6 +27,7 @@ You will want to use a function from the **scales** package, see <https://scales
 
 ```{r plot, fig.width=10}
 hotels %>%
+  mutate(arrival_date_month = fct_relevel(arrival_date_month, month.name)) %>%
   group_by(hotel, arrival_date_month) %>%   # group by hotel type and arrival month
   summarize(mean_adr = mean(adr)) %>%       # calculate mean adr for each group
   ggplot(aes(
